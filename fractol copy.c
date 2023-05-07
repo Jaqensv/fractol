@@ -29,13 +29,18 @@ void ft_hook(void* param)
 		image->instances[0].x += 5;
 }
 
-int32_t main(int32_t argc, char **argv)
+int32_t main(int32_t argc, const char* argv[])
 {
-	mlx_t*	mlx;
-	char	*fractal_type;
+	mlx_t* mlx;
+	t_fractal mb;
+	t_fractal julia;
+	int	x;
+	int	y;
+	int	i;
 
-	fractal_type = param_checker(argv[1]);
-	if (!(mlx = mlx_init(WIDTH, HEIGHT, fractal_type, true)))
+
+	//////////////////////////////////////////////////////
+	if (!(mlx = mlx_init(WIDTH, HEIGHT, "fractol", true)))
 	{
 		puts(mlx_strerror(mlx_errno));
 		return(EXIT_FAILURE);
@@ -52,10 +57,45 @@ int32_t main(int32_t argc, char **argv)
 		puts(mlx_strerror(mlx_errno));
 		return(EXIT_FAILURE);
 	}
-	if (ft_strlen(fractal_type) == 10)
-		mandelbrot_init(image);
-	if (ft_strlen(fractal_type) == 5)
-		julia_init(image);
+	mb.x1 = -2.1;
+	mb.x2 = 0.6;
+	mb.y1 = -1.2;
+	mb.y2 = 1.2;
+	mb.it_max = 50;
+    
+    y = -1;
+	while (++y < HEIGHT)
+	{
+		x = -1;
+		while (++x < WIDTH)
+		{
+			mb.c_r = x / (double)ZOOM + mb.x1;
+			mb.c_i = y / (double)ZOOM + mb.y1;
+			mb.z_r = 0;
+			mb.z_i = 0;
+			i = 0;
+			while (mb.z_r * mb.z_r + mb.z_i * mb.z_i < 4 && i < mb.it_max)
+			{
+				mb.tmp = mb.z_r;
+				mb.z_r = mb.z_r * mb.z_r - mb.z_i * mb.z_i + mb.c_r;
+				mb.z_i = 2 * mb.z_i * mb.tmp + mb.c_i;
+				i++;
+				if (i == mb.it_max)
+					mlx_put_pixel(image, x, y, 0x000000FF);
+				else if (i <= mb.it_max / 2 && i > mb.it_max / 3)
+					mlx_put_pixel(image, x, y, 0xFFFF00FF);
+				else if (i > mb.it_max / 2)
+					mlx_put_pixel(image, x, y, 0xFF19FFFF);
+				else if (i <= mb.it_max / 3)
+					mlx_put_pixel(image, x, y, 0x000000FF);
+			}
+		} 
+	}
+
+
+	///////// JULIA /////////
+	
+
 	mlx_loop_hook(mlx, ft_hook, mlx);
 	mlx_loop(mlx);
 	mlx_terminate(mlx);
