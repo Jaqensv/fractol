@@ -1,6 +1,6 @@
-NAME = so_long
+NAME = fractol
 
-SOURCES = so_long.c mlx_xpm.c mlx_string_put.c mlx_rgb.c mlx_png.c font.c \
+SOURCES = fractol.c \
 
 OBJECTS = $(SOURCES:.c=.o)
 BONUS = $(SRC_BONUS:.c=.o)

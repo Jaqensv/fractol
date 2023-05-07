@@ -11,7 +11,7 @@ char   *mandelbrot_checker(char *argv)
         i++;
     if (i - 1 == ft_strlen(mandelbrot))
         return ("Mandelbrot");
-    else if (i > 4)
+    else if (i > 3)
         did_you_mean_m();
     else
         param_list();

@@ -1,6 +1,6 @@
 #include "fractol.h"
 
-void	mandelbrot_color(mlx_image_t *image, t_fractal mb, uint32_t x, uint32_t y, int i)
+void	mandelbrot_color(mlx_image_t *image, t_fractal mb, uint32_t x, uint32_t y, int i) /// 5 params ??????
 {
 	if (i == mb.it_max)
 		mlx_put_pixel(image, x, y, 0x000000FF);

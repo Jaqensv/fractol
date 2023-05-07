@@ -14,9 +14,16 @@ void    did_you_mean_j()
 
 void    param_list()
 {
-    write(2, "\n⚠ Wrong fractal type ⚠\n\n", 30);
-    write(2, "Try the following options :\n\n", 30);
-    write(2, "-> mandelbrot <-\n\n", 19);
-    write(2, "-> julia <-\n\n", 14);
+    write(2, "******************************\n", 32);
+    write(2, "*                            *\n", 32);
+    write(2, "*   ⚠ Wrong fractal type ⚠   *\n", 36);
+    write(2, "*                            *\n", 32);
+    write(2, "* Try the following options  *\n", 32);
+    write(2, "*                            *\n", 32);
+    write(2, "*    - >  mandelbrot  < -    *\n", 32);
+    write(2, "*                            *\n", 32);
+    write(2, "*    - >    julia     < -    *\n", 32);
+    write(2, "*                            *\n", 32);
+    write(2, "******************************\n", 32);
     exit(1);
 }

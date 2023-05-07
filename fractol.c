@@ -29,33 +29,43 @@ void ft_hook(void* param)
 		image->instances[0].x += 5;
 }
 
+void	fractal_init(mlx_image_t *image, char *fractal_type)
+{
+	if (ft_strlen(fractal_type) == 10)
+		mandelbrot_init(image);
+	if (ft_strlen(fractal_type) == 5)
+		julia_init(image);
+}
+
+int32_t	image_init(mlx_t **mlx, char *fractal_type)
+{
+	if (!(*mlx = mlx_init(WIDTH, HEIGHT, fractal_type, true)))
+	{
+		puts(mlx_strerror(mlx_errno));
+		return(EXIT_FAILURE);
+	}
+	if (!(image = mlx_new_image(*mlx, WIDTH, HEIGHT)))
+	{
+		mlx_close_window(*mlx);
+		puts(mlx_strerror(mlx_errno));
+		return(EXIT_FAILURE);
+	}
+	if (mlx_image_to_window(*mlx, image, 0, 0) == -1)
+	{
+		mlx_close_window(*mlx);
+		puts(mlx_strerror(mlx_errno));
+		return(EXIT_FAILURE);
+	}
+	return (EXIT_SUCCESS);
+}
 int32_t main(int32_t argc, char **argv)
 {
 	mlx_t*	mlx;
 	char	*fractal_type;
 
 	fractal_type = param_checker(argv[1]);
-	if (!(mlx = mlx_init(WIDTH, HEIGHT, fractal_type, true)))
-	{
-		puts(mlx_strerror(mlx_errno));
-		return(EXIT_FAILURE);
-	}
-	if (!(image = mlx_new_image(mlx, WIDTH, HEIGHT)))
-	{
-		mlx_close_window(mlx);
-		puts(mlx_strerror(mlx_errno));
-		return(EXIT_FAILURE);
-	}
-	if (mlx_image_to_window(mlx, image, 0, 0) == -1)
-	{
-		mlx_close_window(mlx);
-		puts(mlx_strerror(mlx_errno));
-		return(EXIT_FAILURE);
-	}
-	if (ft_strlen(fractal_type) == 10)
-		mandelbrot_init(image);
-	if (ft_strlen(fractal_type) == 5)
-		julia_init(image);
+	image_init(&mlx, fractal_type);
+	fractal_init(image, fractal_type);
 	mlx_loop_hook(mlx, ft_hook, mlx);
 	mlx_loop(mlx);
 	mlx_terminate(mlx);
