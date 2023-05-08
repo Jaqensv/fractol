@@ -29,8 +29,9 @@ void	mlx_put_pixel(mlx_image_t* image, uint32_t x, uint32_t y, uint32_t color);
 void	mandelbrot_init(mlx_image_t *image);
 void	julia_init(mlx_image_t *image);
 char	*param_checker(char *argv);
-void    did_you_mean_m();
-void    did_you_mean_j();
-void    param_list();
+void	did_you_mean_m();
+void	did_you_mean_j();
+void	param_list();
+void	wrong_param();
 
 #endif

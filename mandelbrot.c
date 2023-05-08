@@ -56,4 +56,3 @@ void	mandelbrot_init(mlx_image_t *image)
 	mandelbrot_algo(image, mb, x, y);
 	return ;
 }
-

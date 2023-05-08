@@ -14,8 +14,8 @@ char   *mandelbrot_checker(char *argv)
     else if (i > 3)
         did_you_mean_m();
     else
-        param_list();
-    exit(1);
+        wrong_param();
+    return("Mandelbrot");
 }
 
 char   *julia_checker(char *argv)
@@ -32,8 +32,8 @@ char   *julia_checker(char *argv)
     else if (i > 2)
         did_you_mean_j();
     else
-        param_list();
-    exit(1);
+        wrong_param();
+    return ("Julia");
 }
 
 char   *param_checker(char *argv)
@@ -45,6 +45,6 @@ char   *param_checker(char *argv)
     else if (argv[0] == 'j' || argv[0] == 'J')
         fractal_type = julia_checker(argv);
     else
-        param_list();
+        wrong_param();
     return (fractal_type);
 }
