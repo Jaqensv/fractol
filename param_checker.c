@@ -7,9 +7,9 @@ char   *mandelbrot_checker(char *argv)
 
     i = 0;
     mandelbrot = "mandelbrot";
-    while (argv[i] == mandelbrot[i] || argv[i] == mandelbrot[i] - 32)
+    while (argv && argv[i] && (argv[i] == mandelbrot[i] || argv[i] == mandelbrot[i] - 32))
         i++;
-    if (i - 1 == ft_strlen(mandelbrot))
+    if (i == ft_strlen(mandelbrot))
         return ("Mandelbrot");
     else if (i > 3)
         did_you_mean_m();
@@ -25,9 +25,9 @@ char   *julia_checker(char *argv)
 
     i = 0;
     julia = "julia";
-    while (argv[i] == julia[i] || argv[i] == julia[i] - 32)
+    while (argv && argv[i] && argv[i] == julia[i] || argv[i] == julia[i] - 32)
         i++;
-    if (i - 1 == ft_strlen(julia))
+    if (i == ft_strlen(julia))
         return ("Julia");
     else if (i > 2)
         did_you_mean_j();

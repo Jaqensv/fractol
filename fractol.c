@@ -6,68 +6,51 @@
 #include "fractol.h"
 #include "MLX42/include/MLX42/MLX42.h"
 
-static mlx_image_t* image;
-
-int32_t ft_pixel(int32_t r, int32_t g, int32_t b, int32_t a)
+int32_t	ft_pixel(int32_t r, int32_t g, int32_t b, int32_t a)
 {
-    return (r << 24 | g << 16 | b << 8 | a);
+	return (r << 24 | g << 16 | b << 8 | a);
 }
 
-void ft_hook(void* param)
+void	fractal_init(t_fractal *init)
 {
-	mlx_t* mlx = param;
-
-	if (mlx_is_key_down(mlx, MLX_KEY_ESCAPE))
-		mlx_close_window(mlx);
-	if (mlx_is_key_down(mlx, MLX_KEY_UP))
-		image->instances[0].y -= 5;
-	if (mlx_is_key_down(mlx, MLX_KEY_DOWN))
-		image->instances[0].y += 5;
-	if (mlx_is_key_down(mlx, MLX_KEY_LEFT))
-		image->instances[0].x -= 5;
-	if (mlx_is_key_down(mlx, MLX_KEY_RIGHT))
-		image->instances[0].x += 5;
+	if (ft_strlen(init->fractal_type) == 10)
+		mandelbrot_init(init);
+	if (ft_strlen(init->fractal_type) == 5)
+		julia_init(init);
 }
 
-void	fractal_init(mlx_image_t *image, char *fractal_type)
+int32_t	image_init(t_fractal *init)
 {
-	if (ft_strlen(fractal_type) == 10)
-		mandelbrot_init(image);
-	if (ft_strlen(fractal_type) == 5)
-		julia_init(image);
-}
-
-int32_t	image_init(mlx_t **mlx, char *fractal_type)
-{
-	if (!(*mlx = mlx_init(WIDTH, HEIGHT, fractal_type, true)))
+	if (!(init->mlx = mlx_init(WIDTH, HEIGHT, init->fractal_type, true)))
 	{
-		puts(mlx_strerror(mlx_errno));
+		//puts(mlx_strerror(mlx_errno)); // remplacer les puts par putstr
 		return(EXIT_FAILURE);
 	}
-	if (!(image = mlx_new_image(*mlx, WIDTH, HEIGHT)))
+	if (!(init->image = mlx_new_image(init->mlx, WIDTH, HEIGHT)))
 	{
-		mlx_close_window(*mlx);
-		puts(mlx_strerror(mlx_errno));
+		mlx_close_window(init->mlx);
+		//puts(mlx_strerror(mlx_errno)); // remplacer les puts par putstr
 		return(EXIT_FAILURE);
 	}
-	if (mlx_image_to_window(*mlx, image, 0, 0) == -1)
+	if (mlx_image_to_window(init->mlx, init->image, 0, 0) == -1)
 	{
-		mlx_close_window(*mlx);
-		puts(mlx_strerror(mlx_errno));
+		mlx_close_window(init->mlx);
+		//puts(mlx_strerror(mlx_errno)); // remplacer les puts par putstr
 		return(EXIT_FAILURE);
 	}
 	return (EXIT_SUCCESS);
 }
-int32_t main(int32_t argc, char **argv)
-{
-	mlx_t*	mlx;
-	char	*fractal_type;
 
-	fractal_type = param_checker(argv[1]);
-	image_init(&mlx, fractal_type);
-	fractal_init(image, fractal_type);
-	mlx_loop_hook(mlx, ft_hook, mlx);
-	mlx_loop(mlx);
-	mlx_terminate(mlx);
+int32_t	main(int32_t argc, char **argv)
+{
+	t_fractal	init;
+
+	init.fractal_type = param_checker(argv[1]);
+	image_init(&init);
+	fractal_init(&init);
+	mlx_scroll_hook(init.mlx, scroll, &init);
+	mlx_loop_hook(init.mlx, hooks, &init);
+	mlx_loop(init.mlx);
+	mlx_terminate(init.mlx);
 	return (EXIT_SUCCESS);
 }
