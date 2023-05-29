@@ -1,32 +1,38 @@
 NAME = fractol
 
 SOURCES = fractol.c \
+		hooks.c \
+		image.c \
+		julia.c \
+		mandelbrot.c \
+		param_checker.c \
+		print.c \
 
 OBJECTS = $(SOURCES:.c=.o)
 BONUS = $(SRC_BONUS:.c=.o)
 
 CC = gcc $(CFLAGS)
 
-CFLAGS = -Wall -Wextra -Werror -g
+CFLAGS = -Wall -Wextra -Werror
 
-all: mlx $(NAME)
+all: MLX42 $(NAME)
 
 mlx:
-	$(MAKE) -C mlx
+	$(MAKE) -C MLX42
 
 $(NAME): $(OBJECTS)
-		$(CC) -L mlx $(OBJECTS) -o $(NAME)
+		$(CC) -L MLX42 $(OBJECTS) -o $(NAME)
 
 bonus: $(BONUS)
 	$(AR) -r $(NAME) $?
 	
 clean:
 		rm -f $(OBJECTS) $(BONUS)
-		$(MAKE) -C mlx clean
+		$(MAKE) -C MLX42 clean
 
 fclean: clean
 		rm -f $(NAME)
-		$(MAKE) -C mlx fclean
+		$(MAKE) -C MLX42 fclean
 
 re: fclean all
 

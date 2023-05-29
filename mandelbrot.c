@@ -9,24 +9,12 @@ void	mandelbrot_color(t_fractal init)
 	else if (init.i > init.it_max / 2)
 		mlx_put_pixel(init.image, init.x, init.y, 0xFF19FFFF);
 	else if (init.i <= init.it_max / 3)
-		mlx_put_pixel(init.image, init.x, init.y, 0x000000FF);
+		mlx_put_pixel(init.image, init.x, init.y, 0xFFFFFFFF);
 	return ;
 }
 
 void	mandelbrot_algo(t_fractal init)
 {
-	// double new_x = init.zoom_x / init.zoom + init.x1;
-    // double new_y = init.zoom_y / init.zoom + init.y1;
-
-    // double width = init.x2 - init.x1;
-    // double height = init.y2 - init.y1;
-
-    // double zoom_factor = 10; // Facteur de zoom personnalisable
-
-    // init.x1 = new_x - WIDTH / (2 * zoom_factor);
-    // init.x2 = new_x + WIDTH / (2 * zoom_factor);
-    // init.y1 = new_y - HEIGHT / (2 * zoom_factor);
-    // init.y2 = new_y + HEIGHT / (2 * zoom_factor);
 	init.y = -1;
 	while (++init.y < HEIGHT)
 	{
@@ -53,12 +41,12 @@ void	mandelbrot_algo(t_fractal init)
 
 void	mandelbrot_init(t_fractal *init)
 {
-	init->zoom = 450;
+	init->zoom = 250;
 	init->x1 = -2.1;
 	init->x2 = 0.6;
 	init->y1 = -1.2;
 	init->y2 = 1.2;
-	init->it_max = 50;
+	init->it_max = 40;
 	mandelbrot_algo(*init);
 	return ;
 }
