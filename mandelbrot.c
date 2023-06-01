@@ -32,8 +32,8 @@ void	mandelbrot_algo(t_fractal init)
 				init.z_r = init.z_r * init.z_r - init.z_i * init.z_i + init.c_r;
 				init.z_i = 2 * init.z_i * init.tmp + init.c_i;
 				init.i++;
-				mandelbrot_color(init);
 			}
+			mandelbrot_color(init);
 		}
 	}
 	return ;

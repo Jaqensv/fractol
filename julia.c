@@ -29,12 +29,13 @@ void	julia_algo(t_fractal init)
 				init.z_r = init.z_r * init.z_r - init.z_i * init.z_i + init.c_r;
 				init.z_i = 2 * init.z_i * init.tmp + init.c_i;
 				init.i++;
-				julia_color(init);
 			}
+			julia_color(init);
 		} 
 	}
 	return ;
 }
+
 void	coefficient_julia(t_fractal *init)
 {
 	double coefficient_r[11] = {0.285, 0.27, 0.27, -0.51, -0.68, -0.75, -1.03, -0.51, -0.13, -0.06, 0.36};

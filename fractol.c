@@ -26,7 +26,7 @@ int32_t	main(int32_t argc, char **argv)
 	t_fractal	init;
 
 	init.fractal_type = param_checker(argc, argv[1]);
-	if (!(init.mlx = mlx_init(WIDTH, HEIGHT, init.fractal_type, true)))
+	if (!(init.mlx = mlx_init(WIDTH, HEIGHT, init.fractal_type, false)))
 		return(EXIT_FAILURE);
 	image_init(&init);
 	if (argc == 3 && ft_strlen(init.fractal_type) == 5) // argv[2] >= '0' && argv[2] <= '9' &&

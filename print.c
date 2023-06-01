@@ -52,7 +52,7 @@ void    wrong_param()
 {
     write(2, "******************************\n", 32);
     write(2, "*                            *\n", 32);
-    write(2, "*   ⚠ Wrong fractal type ⚠   *\n", 36);
+    write(2, "*   ⚠ Wrong fractal type ⚠  *\n", 35);
     write(2, "*                            *\n", 32);
     write(2, "*     Available options      *\n", 32);
     write(2, "*                            *\n", 32);
