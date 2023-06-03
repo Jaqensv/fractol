@@ -19,9 +19,7 @@ typedef struct s_fractal
 	char			*fractal_type;
 	int				i;
 	int				it_max;
-	int				zoom_x;
-	int				zoom_y;
-	double			zoom;
+	double 			zoom;
 	double			x1;
 	double			x2;
 	double			y1;

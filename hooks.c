@@ -6,7 +6,7 @@
 /*   By: mde-lang <mde-lang@student.42mulhouse.fr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/01 00:16:06 by mde-lang          #+#    #+#             */
-/*   Updated: 2023/06/01 21:52:11 by mde-lang         ###   ########.fr       */
+/*   Updated: 2023/06/03 02:55:01 by mde-lang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,30 +14,29 @@
 
 t_fractal	*init_modifier_zoom(t_fractal *init)
 {
-	//double	tmp;
-	//mlx_get_mouse_pos(init->mlx, &init->x, &init->y);
-	init->zoom *= 1.1;
+	double	tmp;
+
+	tmp = init->x1;
+	init->x1 = init->x1 - (init->x1 - init->x2) * (1 - 0.9) / 2;
+	init->x2 = init->x2 - (init->x2 - tmp) * (1 - 0.9) / 2;
+	tmp = init->y1;
+	init->y1 = init->y1 - (init->y1 - init->y2) * (1 - 0.9) / 2;
+	init->y2 = init->y2 - (init->y2 - tmp) * (1 - 0.9) / 2;
 	init->it_max += 1;
-	init->x1 *= 0.9;
-	init->x2 *= 0.9;
-	init->y1 *= 0.9;
-	init->y2 *= 0.9;
-	// mlx_delete_image(init->mlx, init->image);
-	// image_init(init);
 	return (init);
 }
 
 t_fractal	*init_modifier_dezoom(t_fractal *init)
 {
-	//mlx_get_mouse_pos(init->mlx, &init->x, &init->y);
-	init->zoom *= 0.9;
+	double	tmp;
+	
+	tmp = init->x1;
+	init->x1 = init->x1 - (init->x1 - init->x2) * (1 - 1.1) / 2;
+	init->x2 = init->x2 - (init->x2 - tmp) * (1 - 1.1) / 2;
+	tmp = init->y1;
+	init->y1 = init->y1 - (init->y1 - init->y2) * (1 - 1.1) / 2;
+	init->y2 = init->y2 - (init->y2 - tmp) * (1 - 1.1) / 2;
 	init->it_max -= 1;
-	init->x1 *= 1.1;
-	init->y1 *= 1.1;
-	init->x2 *= 1.1;
-	init->y2 *= 1.1;
-	// mlx_delete_image(init->mlx, init->image);
-	// image_init(init);
 	return (init);
 }
 

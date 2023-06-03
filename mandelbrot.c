@@ -21,8 +21,8 @@ void	mandelbrot_algo(t_fractal init)
 		init.x = -1;
 		while (++init.x < WIDTH)
 		{
-			init.c_r = init.x / init.zoom + init.x1;
-			init.c_i = init.y / init.zoom + init.y1;
+			init.c_r = init.x * (init.x2 - init.x1) / WIDTH + init.x1;
+			init.c_i = init.y * (init.y2 - init.y1) / HEIGHT + init.y1;
 			init.z_r = 0;
 			init.z_i = 0;
 			init.i = 0;
@@ -41,7 +41,6 @@ void	mandelbrot_algo(t_fractal init)
 
 void	mandelbrot_init(t_fractal *init)
 {
-	init->zoom = 250;
 	init->x1 = -2.1;
 	init->x2 = 0.6;
 	init->y1 = -1.2;
