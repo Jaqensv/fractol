@@ -6,7 +6,7 @@
 /*   By: mde-lang <mde-lang@student.42mulhouse.fr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/01 00:16:06 by mde-lang          #+#    #+#             */
-/*   Updated: 2023/06/03 02:55:01 by mde-lang         ###   ########.fr       */
+/*   Updated: 2023/06/06 10:56:11 by mde-lang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,18 +66,12 @@ void	hooks(void *param)
 	init = (t_fractal *)param;
 	if (mlx_is_key_down(init->mlx, MLX_KEY_ESCAPE))
 		mlx_close_window(init->mlx);
-	///////////////////////////////////////////////
-	//////////////////////////////////////////////
-
-
 	
 	if (mlx_is_key_down(init->mlx, MLX_KEY_RIGHT))
 	{
 		move = (init->x2 - init->x1) * 0.1;
 		init->x1 += move;
 		init->x2 += move;
-		// mlx_delete_image(init->mlx, init->image);
-		// image_init(init);
 		fractal_algo(init);
 	}
 	if (mlx_is_key_down(init->mlx, MLX_KEY_LEFT))
@@ -85,8 +79,6 @@ void	hooks(void *param)
 		move = (init->x2 - init->x1) * 0.1;
 		init->x1 -= move;
 		init->x2 -= move;
-		// mlx_delete_image(init->mlx, init->image);
-		// image_init(init);
 		fractal_algo(init);
 	}
 	if (mlx_is_key_down(init->mlx, MLX_KEY_UP))
@@ -94,8 +86,6 @@ void	hooks(void *param)
 		move = (init->y2 - init->y1) * 0.1;
 		init->y1 -= move;
 		init->y2 -= move;
-		// mlx_delete_image(init->mlx, init->image);
-		// image_init(init);
 		fractal_algo(init);
 	}
 	if (mlx_is_key_down(init->mlx, MLX_KEY_DOWN))
@@ -103,16 +93,9 @@ void	hooks(void *param)
 		move = (init->y2 - init->y1) * 0.1;
 		init->y1 += move;
 		init->y2 += move;
-		// mlx_delete_image(init->mlx, init->image);
-		// image_init(init);
 		fractal_algo(init);
 	}
 
-
-
-
-	///////////////////////////////////////////////
-	//////////////////////////////////////////////
 	if (mlx_is_key_down(init->mlx, MLX_KEY_E))
 	{
 		if (init->index < 10)
