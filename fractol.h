@@ -7,8 +7,8 @@
 # include <unistd.h>
 # include <stdio.h>
 
-# define WIDTH 600
-# define HEIGHT 600
+# define WIDTH 1000
+# define HEIGHT 1000
 
 typedef struct s_fractal
 {	
@@ -51,5 +51,6 @@ void		coefficient_julia(t_fractal *init);
 void		fractal_algo(t_fractal *init);
 void		redimension_image(t_fractal *init);
 int32_t		image_init(t_fractal *init);
+int32_t		ft_color(t_fractal init);
 
 #endif

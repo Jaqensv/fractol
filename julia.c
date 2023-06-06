@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   julia.c                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mde-lang <mde-lang@student.42mulhouse.fr>  +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/06/06 12:45:19 by mde-lang          #+#    #+#             */
+/*   Updated: 2023/06/06 12:45:20 by mde-lang         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "fractol.h"
 
 void	julia_color(t_fractal init)
@@ -18,10 +30,8 @@ void	julia_algo(t_fractal init)
 		while (++init.x < WIDTH)
 		{
 			coefficient_julia(&init); 
-			//0.285;
-			//0.01;
-			init.z_r = init.x / init.zoom + init.x1;
-			init.z_i = init.y / init.zoom + init.y1;
+			init.z_r = init.x * (init.x2 - init.x1) / WIDTH + init.x1;
+			init.z_i = init.y * (init.y2 - init.y1) / HEIGHT + init.y1;
 			init.i = 0;
 			while (init.z_r * init.z_r + init.z_i * init.z_i < 4 && init.i < init.it_max)
 			{
@@ -30,7 +40,7 @@ void	julia_algo(t_fractal init)
 				init.z_i = 2 * init.z_i * init.tmp + init.c_i;
 				init.i++;
 			}
-			julia_color(init);
+			mlx_put_pixel(init.image, init.x, init.y, ft_color(init));
 		} 
 	}
 	return ;

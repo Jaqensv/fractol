@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   mandelbrot.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mde-lang <mde-lang@student.42mulhouse.fr>  +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/06/06 12:45:26 by mde-lang          #+#    #+#             */
+/*   Updated: 2023/06/06 12:45:27 by mde-lang         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "fractol.h"
 
 void	mandelbrot_color(t_fractal init)
@@ -33,7 +45,7 @@ void	mandelbrot_algo(t_fractal init)
 				init.z_i = 2 * init.z_i * init.tmp + init.c_i;
 				init.i++;
 			}
-			mandelbrot_color(init);
+			mlx_put_pixel(init.image, init.x, init.y, ft_color(init));
 		}
 	}
 	return ;
