@@ -6,20 +6,11 @@
 /*   By: mde-lang <mde-lang@student.42mulhouse.fr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/06 12:45:19 by mde-lang          #+#    #+#             */
-/*   Updated: 2023/06/06 12:45:20 by mde-lang         ###   ########.fr       */
+/*   Updated: 2023/06/07 10:31:14 by mde-lang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
-
-void	julia_color(t_fractal init)
-{
-	if (init.i == init.it_max)
-		mlx_put_pixel(init.image, init.x, init.y, 0x96FFFFFF);
-	else
-		mlx_put_pixel(init.image, init.x, init.y, 0x000000FF);
-	return ;
-}
 
 void	julia_algo(t_fractal init)
 {

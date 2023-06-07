@@ -6,9 +6,10 @@
 # include <stdlib.h>
 # include <unistd.h>
 # include <stdio.h>
+# include "inc_gnl/get_next_line.h"
 
-# define WIDTH 1000
-# define HEIGHT 1000
+# define WIDTH 800
+# define HEIGHT 800
 
 typedef struct s_fractal
 {	

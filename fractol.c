@@ -6,7 +6,7 @@
 /*   By: mde-lang <mde-lang@student.42mulhouse.fr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/06 12:45:36 by mde-lang          #+#    #+#             */
-/*   Updated: 2023/06/06 12:45:37 by mde-lang         ###   ########.fr       */
+/*   Updated: 2023/06/07 14:56:16 by mde-lang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,6 @@ int32_t	main(int32_t argc, char **argv)
 	mlx_loop_hook(init.mlx, hooks, &init);
 	mlx_loop(init.mlx);
 	mlx_terminate(init.mlx);
-	//system("leaks a.out");
+	//system("leaks fractol");
 	return (EXIT_SUCCESS);
 }

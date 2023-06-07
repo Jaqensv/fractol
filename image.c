@@ -6,7 +6,7 @@
 /*   By: mde-lang <mde-lang@student.42mulhouse.fr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/06 12:45:15 by mde-lang          #+#    #+#             */
-/*   Updated: 2023/06/06 12:45:16 by mde-lang         ###   ########.fr       */
+/*   Updated: 2023/06/06 15:30:36 by mde-lang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,8 +23,10 @@ int32_t	ft_color(t_fractal init)
 
 	if (init.i == init.it_max)
 		color = 255;
+	else if (init.i < init.it_max / 2)
+		color = init.i * 100005000;
 	else
-		color = init.i * 1000000;
+		color = init.i * 154520000;
 	return (color);
 }
 

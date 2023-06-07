@@ -1,34 +1,50 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   print.c                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mde-lang <mde-lang@student.42mulhouse.fr>  +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/06/07 11:03:55 by mde-lang          #+#    #+#             */
+/*   Updated: 2023/06/07 15:03:00 by mde-lang         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "fractol.h"
 
 void    did_you_mean_m()
 {
-    char    keyword[7];
-
+    char    *keyword;
+    
+    ssize_t read(int fildes, void *buf, size_t nbyte);
     write(2, "\nDid you mean 'mandelbrot' ?\n\n", 31);
-    while (strcmp(keyword, "yes") != 0)
+    while (ft_strncmp(keyword, "yes", 3) != 0)
     {
         write(2, "Type 'yes' or 'options'\n\n", 25);
-        scanf("%s", keyword);
-        if (strcmp(keyword, "yes") == 0 || strcmp(keyword, "y") == 0)
+        keyword = get_next_line(0);
+        if (ft_strncmp(keyword, "yes", 3) == 0 || ft_strncmp(keyword, "y", 1) == 0)
             return ;
-        if (strcmp(keyword, "options") == 0)
+        if (ft_strncmp(keyword, "options", 7) == 0)
             param_list();
     }
     exit(1);
 }
 
+/// free le keyword
+/// mettre un dezoom max
+
 void    did_you_mean_j()
 {
-    char    keyword[7];
+    char    *keyword;
 
     write(2, "\nDid you mean 'julia' ?\n\n", 26);
-    while (strcmp(keyword, "yes") != 0)
+    while (ft_strncmp(keyword, "yes", 3) != 0)
     {
         write(2, "Type 'yes' or 'options'\n\n", 25);
-        scanf("%s", keyword);
-        if (strcmp(keyword, "yes") == 0 || strcmp(keyword, "y") == 0)
+        keyword = get_next_line(0);
+        if (ft_strncmp(keyword, "yes", 3) == 0 || ft_strncmp(keyword, "y", 1) == 0)
             return ;
-        if (strcmp(keyword, "options") == 0)
+        if (ft_strncmp(keyword, "options", 7) == 0)
             param_list();
     }
     exit(1);

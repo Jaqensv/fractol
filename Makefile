@@ -6,7 +6,9 @@ SOURCES = fractol.c \
 		julia.c \
 		mandelbrot.c \
 		param_checker.c \
-		print.c
+		print.c \
+		inc_gnl/get_next_line_utils.c \
+		inc_gnl/get_next_line.c \
 
 OBJECTS = $(SOURCES:.c=.o)
 BONUS = $(SRC_BONUS:.c=.o)
@@ -15,7 +17,7 @@ CC = gcc $(CFLAGS)
 
 CFLAGS = -Wall -Wextra -Werror
 
-all: libft $(NAME) MLX42/build $(NAME)
+all: libft $(NAME) MLX42/build $(NAME) 
 
 libft:
 	$(MAKE) -C inc_libft
