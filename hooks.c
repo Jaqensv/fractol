@@ -5,14 +5,14 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: mde-lang <mde-lang@student.42mulhouse.fr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/06/01 00:16:06 by mde-lang          #+#    #+#             */
-/*   Updated: 2023/06/08 11:01:27 by mde-lang         ###   ########.fr       */
+/*   Created: 2023/06/08 21:40:04 by mde-lang          #+#    #+#             */
+/*   Updated: 2023/06/08 23:08:48 by mde-lang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
 
-void	scroll(double xdelta, double ydelta, void* param)
+void	scroll(double xdelta, double ydelta, void *param)
 {
 	t_fractal	*init;
 	static int	i = 0;
@@ -66,7 +66,7 @@ void	hooks_x(void *param)
 {
 	double		move;
 	t_fractal	*init;
-	
+
 	init = (t_fractal *)param;
 	if (mlx_is_key_down(init->mlx, MLX_KEY_RIGHT))
 	{
@@ -88,7 +88,7 @@ void	hooks_y(void *param)
 {
 	double		move;
 	t_fractal	*init;
-	
+
 	init = (t_fractal *)param;
 	if (mlx_is_key_down(init->mlx, MLX_KEY_UP))
 	{

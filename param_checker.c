@@ -6,7 +6,7 @@
 /*   By: mde-lang <mde-lang@student.42mulhouse.fr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/08 09:32:22 by mde-lang          #+#    #+#             */
-/*   Updated: 2023/06/08 16:36:27 by mde-lang         ###   ########.fr       */
+/*   Updated: 2023/06/08 23:44:24 by mde-lang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,8 @@ char	*mandelbrot_checker(char *argv)
 
 	i = 0;
 	mandelbrot = "mandelbrot";
-	while (argv && argv[i] && (argv[i] == mandelbrot[i] || argv[i] == mandelbrot[i] - 32))
+	while (argv && argv[i] && (argv[i] == mandelbrot[i]
+			|| argv[i] == mandelbrot[i] - 32))
 		i++;
 	if (i == (int)ft_strlen(mandelbrot))
 		return ("Mandelbrot");
@@ -54,7 +55,7 @@ char	*param_checker(int32_t argc, char *argv)
 
 	fractal_type = NULL;
 	if (argc < 2)
-		exit(1);
+		wrong_param();
 	if (ft_strncmp(&argv[1], "julia", 5) == 0 && argc > 3)
 		wrong_param();
 	if (ft_strncmp(&argv[1], "mandelbrot", 10) == 0 && argc > 2)

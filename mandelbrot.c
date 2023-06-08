@@ -6,7 +6,7 @@
 /*   By: mde-lang <mde-lang@student.42mulhouse.fr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/06 12:45:26 by mde-lang          #+#    #+#             */
-/*   Updated: 2023/06/07 10:31:04 by mde-lang         ###   ########.fr       */
+/*   Updated: 2023/06/08 21:38:09 by mde-lang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,8 @@ void	mandelbrot_algo(t_fractal init)
 			init.z_r = 0;
 			init.z_i = 0;
 			init.i = 0;
-			while (init.z_r * init.z_r + init.z_i * init.z_i < 4 && init.i < init.it_max)
+			while (init.z_r * init.z_r + init.z_i * init.z_i < 4
+				&& init.i < init.it_max)
 			{
 				init.tmp = init.z_r;
 				init.z_r = init.z_r * init.z_r - init.z_i * init.z_i + init.c_r;
