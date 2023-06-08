@@ -6,7 +6,7 @@
 /*   By: mde-lang <mde-lang@student.42mulhouse.fr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/06 12:45:36 by mde-lang          #+#    #+#             */
-/*   Updated: 2023/06/07 14:56:16 by mde-lang         ###   ########.fr       */
+/*   Updated: 2023/06/08 16:22:42 by mde-lang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ int32_t	main(int32_t argc, char **argv)
 	if (!(init.mlx = mlx_init(WIDTH, HEIGHT, init.fractal_type, false)))
 		return(EXIT_FAILURE);
 	image_init(&init);
-	if (argc == 3 && ft_strlen(init.fractal_type) == 5) // argv[2] >= '0' && argv[2] <= '9' &&
+	if (argc == 3 && ft_strlen(init.fractal_type) == 5)
 	{
         init.index = ft_atoi(argv[2]);
 		julia_init(&init);
@@ -54,9 +54,10 @@ int32_t	main(int32_t argc, char **argv)
 	else
 		fractal_init(&init);
 	mlx_scroll_hook(init.mlx, scroll, &init);
-	mlx_loop_hook(init.mlx, hooks, &init);
+	mlx_loop_hook(init.mlx, hooks_eq, &init);
+	mlx_loop_hook(init.mlx, hooks_x, &init);
+	mlx_loop_hook(init.mlx, hooks_y, &init);
 	mlx_loop(init.mlx);
 	mlx_terminate(init.mlx);
-	//system("leaks fractol");
 	return (EXIT_SUCCESS);
 }

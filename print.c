@@ -6,7 +6,7 @@
 /*   By: mde-lang <mde-lang@student.42mulhouse.fr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/07 11:03:55 by mde-lang          #+#    #+#             */
-/*   Updated: 2023/06/07 15:03:00 by mde-lang         ###   ########.fr       */
+/*   Updated: 2023/06/08 15:34:29 by mde-lang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,15 +23,15 @@ void    did_you_mean_m()
         write(2, "Type 'yes' or 'options'\n\n", 25);
         keyword = get_next_line(0);
         if (ft_strncmp(keyword, "yes", 3) == 0 || ft_strncmp(keyword, "y", 1) == 0)
-            return ;
+            return (free(keyword));
         if (ft_strncmp(keyword, "options", 7) == 0)
+        {
+            free(keyword);
             param_list();
+        }
     }
     exit(1);
 }
-
-/// free le keyword
-/// mettre un dezoom max
 
 void    did_you_mean_j()
 {
@@ -43,9 +43,12 @@ void    did_you_mean_j()
         write(2, "Type 'yes' or 'options'\n\n", 25);
         keyword = get_next_line(0);
         if (ft_strncmp(keyword, "yes", 3) == 0 || ft_strncmp(keyword, "y", 1) == 0)
-            return ;
+            return (free(keyword));
         if (ft_strncmp(keyword, "options", 7) == 0)
+        {
+            free(keyword);
             param_list();
+        }
     }
     exit(1);
 }

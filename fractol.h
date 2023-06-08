@@ -31,8 +31,6 @@ typedef struct s_fractal
 	double			c_i;
 	double			tmp;
 	int				index;
-	int				image_x;
-	int				image_y;
 }					t_fractal;
 
 char		*param_checker(int32_t argc, char *argv);
@@ -43,7 +41,9 @@ void		did_you_mean_m();
 void		did_you_mean_j();
 void		param_list();
 void		wrong_param();
-void		hooks(void *param);
+void		hooks_eq(void *param);
+void		hooks_x(void *param);
+void		hooks_y(void *param);
 void		mandelbrot_algo(t_fractal init);
 void		julia_algo(t_fractal init);
 void		scroll(double xdelta, double ydelta, void* param);
@@ -53,5 +53,7 @@ void		fractal_algo(t_fractal *init);
 void		redimension_image(t_fractal *init);
 int32_t		image_init(t_fractal *init);
 int32_t		ft_color(t_fractal init);
+t_fractal	*init_modifier_zoom(t_fractal *init);
+t_fractal	*init_modifier_dezoom(t_fractal *init);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: mde-lang <mde-lang@student.42mulhouse.fr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/06 12:45:15 by mde-lang          #+#    #+#             */
-/*   Updated: 2023/06/06 15:30:36 by mde-lang         ###   ########.fr       */
+/*   Updated: 2023/06/08 09:46:12 by mde-lang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,34 @@ int32_t	ft_color(t_fractal init)
 	else
 		color = init.i * 154520000;
 	return (color);
+}
+
+t_fractal	*init_modifier_zoom(t_fractal *init)
+{
+	double	tmp;
+
+	tmp = init->x1;
+	init->x1 = init->x1 - (init->x1 - init->x2) * (1 - 0.9) / 2;
+	init->x2 = init->x2 - (init->x2 - tmp) * (1 - 0.9) / 2;
+	tmp = init->y1;
+	init->y1 = init->y1 - (init->y1 - init->y2) * (1 - 0.9) / 2;
+	init->y2 = init->y2 - (init->y2 - tmp) * (1 - 0.9) / 2;
+	init->it_max += 1;
+	return (init);
+}
+
+t_fractal	*init_modifier_dezoom(t_fractal *init)
+{
+	double	tmp;
+	
+	tmp = init->x1;
+	init->x1 = init->x1 - (init->x1 - init->x2) * (1 - 1.1) / 2;
+	init->x2 = init->x2 - (init->x2 - tmp) * (1 - 1.1) / 2;
+	tmp = init->y1;
+	init->y1 = init->y1 - (init->y1 - init->y2) * (1 - 1.1) / 2;
+	init->y2 = init->y2 - (init->y2 - tmp) * (1 - 1.1) / 2;
+	init->it_max -= 1;
+	return (init);
 }
 
 int32_t	image_init(t_fractal *init)

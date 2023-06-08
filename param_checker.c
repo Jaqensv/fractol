@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   param_checker.c                                    :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mde-lang <mde-lang@student.42mulhouse.fr>  +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/06/08 09:32:22 by mde-lang          #+#    #+#             */
+/*   Updated: 2023/06/08 16:36:27 by mde-lang         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "fractol.h"
 
 char	*mandelbrot_checker(char *argv)
@@ -41,7 +53,11 @@ char	*param_checker(int32_t argc, char *argv)
 	char	*fractal_type;
 
 	fractal_type = NULL;
-	if (argc > 3)
+	if (argc < 2)
+		exit(1);
+	if (ft_strncmp(&argv[1], "julia", 5) == 0 && argc > 3)
+		wrong_param();
+	if (ft_strncmp(&argv[1], "mandelbrot", 10) == 0 && argc > 2)
 		wrong_param();
 	if (argv[0] == 'm' || argv[0] == 'M')
 		fractal_type = mandelbrot_checker(argv);
