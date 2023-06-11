@@ -6,7 +6,7 @@
 /*   By: mde-lang <mde-lang@student.42mulhouse.fr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/07 11:03:55 by mde-lang          #+#    #+#             */
-/*   Updated: 2023/06/08 23:37:14 by mde-lang         ###   ########.fr       */
+/*   Updated: 2023/06/10 20:25:11 by mde-lang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,6 @@ void	did_you_mean_j(void)
 
 void	param_list(void)
 {
-	system("leaks fractol");
 	write(2, "******************************\n", 32);
 	write(2, "*                            *\n", 32);
 	write(2, "*     Available options      *\n", 32);
@@ -66,7 +65,7 @@ void	param_list(void)
 	write(2, "*    - >  mandelbrot  < -    *\n", 32);
 	write(2, "*                            *\n", 32);
 	write(2, "*    - >    julia     < -    *\n", 32);
-	write(2, "*  (julia params : 0 to 11)  *\n", 32);
+	write(2, "*  (julia params : 0 to 10)  *\n", 32);
 	write(2, "*                            *\n", 32);
 	write(2, "******************************\n", 32);
 	exit(1);
@@ -83,7 +82,7 @@ void	wrong_param(void)
 	write(2, "*    - >  mandelbrot  < -    *\n", 32);
 	write(2, "*                            *\n", 32);
 	write(2, "*    - >    julia     < -    *\n", 32);
-	write(2, "*  (julia params : 0 to 11)  *\n", 32);
+	write(2, "*  (julia params : 0 to 10)  *\n", 32);
 	write(2, "*                            *\n", 32);
 	write(2, "******************************\n", 32);
 	exit(1);

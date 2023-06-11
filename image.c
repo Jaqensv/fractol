@@ -6,16 +6,11 @@
 /*   By: mde-lang <mde-lang@student.42mulhouse.fr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/06 12:45:15 by mde-lang          #+#    #+#             */
-/*   Updated: 2023/06/08 22:48:10 by mde-lang         ###   ########.fr       */
+/*   Updated: 2023/06/09 13:10:04 by mde-lang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
-
-int32_t	ft_pixel(int32_t r, int32_t g, int32_t b, int32_t a)
-{
-	return (r << 24 | g << 16 | b << 8 | a);
-}
 
 int32_t	ft_color(t_fractal init)
 {

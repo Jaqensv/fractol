@@ -6,7 +6,7 @@
 /*   By: mde-lang <mde-lang@student.42mulhouse.fr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/08 21:58:03 by mde-lang          #+#    #+#             */
-/*   Updated: 2023/06/08 23:08:52 by mde-lang         ###   ########.fr       */
+/*   Updated: 2023/06/09 13:27:52 by mde-lang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,6 @@
 
 # include "MLX42/include/MLX42/MLX42.h"
 # include "inc_libft/libft.h"
-# include <stdlib.h>
-# include <unistd.h>
-# include <stdio.h>
 # include "inc_gnl/get_next_line.h"
 
 # define WIDTH 800
@@ -62,10 +59,9 @@ void		hooks_y(void *param);
 void		mandelbrot_algo(t_fractal init);
 void		julia_algo(t_fractal init);
 void		scroll(double xdelta, double ydelta, void *param);
-void		fractal_init(t_fractal *init);
 void		coefficient_julia(t_fractal *init);
 void		fractal_algo(t_fractal *init);
-void		redimension_image(t_fractal *init);
+void		fractal_init(t_fractal *init, int argc, char **argv);
 int32_t		image_init(t_fractal *init);
 int32_t		ft_color(t_fractal init);
 t_fractal	*init_modifier_zoom(t_fractal *init);

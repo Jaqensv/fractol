@@ -6,7 +6,7 @@
 /*   By: mde-lang <mde-lang@student.42mulhouse.fr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/06 12:45:19 by mde-lang          #+#    #+#             */
-/*   Updated: 2023/06/08 22:45:32 by mde-lang         ###   ########.fr       */
+/*   Updated: 2023/06/09 13:16:22 by mde-lang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,12 +69,14 @@ void	coefficient_julia(t_fractal *init)
 
 void	julia_init(t_fractal *init)
 {
+	if (init->index > 10)
+		wrong_param();
 	init->zoom = 280;
 	init->x1 = -1;
 	init->x2 = 1;
 	init->y1 = -1.2;
 	init->y2 = 1.2;
-	init->it_max = 80;
+	init->it_max = 70;
 	julia_algo(*init);
 	return ;
 }
